@@ -65,3 +65,31 @@ add_action( 'wp_enqueue_scripts', 'twentytwentytwo_styles' );
 
 // Add block patterns
 require get_template_directory() . '/inc/block-patterns.php';
+
+function create_custom_post_type() {
+
+	register_post_type( 'custom_post_type',
+	
+	array(
+	
+	'labels' => array(
+	
+	'name' => __( 'Teachers' ),
+	
+	'singular_name' => __( 'French Teacher' ),
+	
+	),
+	
+	'public' => true,
+	
+	'has_archive' => true,
+	
+	'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments','prices','Hours' )
+	
+	)
+	
+	);
+	
+	}
+	
+	add_action( 'init', 'create_custom_post_type' );

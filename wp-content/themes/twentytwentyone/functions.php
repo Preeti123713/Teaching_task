@@ -650,3 +650,68 @@ if ( ! function_exists( 'wp_get_list_item_separator' ) ) :
 		return __( ', ', 'twentytwentyone' );
 	}
 endif;
+
+//  custom modifications
+
+function teacher_init() {
+    // set up product labels
+    $labels = array(
+        'name' => 'teacher',
+        'singular_name' => 'teacher',
+        'add_new' => 'Add New Teacher',
+        'add_new_item' => 'Add New Teacher',
+        'edit_item' => 'Edit Teacher',
+        'new_item' => 'New Teacher',
+        'all_items' => 'All Teachers',
+        'view_item' => 'View Teacher',
+        'search_items' => 'Search Teachers',
+        'not_found' =>  'No Teachers Found',
+        'not_found_in_trash' => 'No Teachers found in Trash', 
+        'parent_item_colon' => '',
+        'menu_name' => 'Teachers',
+    );
+    
+    // register post type
+    $args = array(
+        'labels' => $labels,
+        'public' => true,
+        'has_archive' => true,
+        'show_ui' => true,
+        'capability_type' => 'post',
+        'hierarchical' => false,
+        'rewrite' => array('slug' => 'Teacher'),
+        'query_var' => true,
+        'menu_icon' => 'dashicons-randomize',
+        'supports' => array(
+            'title',
+            'editor',
+            'excerpt',
+            'trackbacks',
+            'custom-fields',
+            'comments',
+            'revisions',
+            'thumbnail',
+            'author',
+            'page-attributes'
+        )
+    );
+    register_post_type( 'teacher', $args );
+    
+    // register taxonomy
+    register_taxonomy('teacher_category', 'teacher', array('hierarchical' => true, 'label' => 'Category', 'query_var' => true, 'rewrite' => array( 'slug' => 'product-category' )));
+}
+add_action( 'init', 'teacher_init' );
+
+// function child_enqueue_styles() {
+
+// wp_enqueue_style( 'style1', get_template_directory_uri() .  '/assets/css/style1.css', array(),1.0,true);
+// }
+function enqueue_custom_styles() {
+    wp_enqueue_style( 'custom', get_template_directory_uri() . './assets/css/custom.css', array(), '1.0', 'all' );
+}
+add_action( 'wp_enqueue_scripts', 'enqueue_custom_styles' );
+
+add_action('wp_enqueue_scripts', 'enqueue_custom_js');
+function enqueue_custom_js() {
+    wp_enqueue_script( 'script', get_template_directory_uri() . 'assets/js/script.js', array( 'jquery' ),'1.0', true);
+}

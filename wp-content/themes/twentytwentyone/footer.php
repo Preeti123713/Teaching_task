@@ -1,81 +1,31 @@
-<?php
-/**
- * The template for displaying the footer
- *
- * Contains the closing of the #content div and all content after.
- *
- * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
- *
- * @package WordPress
- * @subpackage Twenty_Twenty_One
- * @since Twenty Twenty-One 1.0
- */
-
-?>
-			</main><!-- #main -->
-		</div><!-- #primary -->
-	</div><!-- #content -->
-
-	<?php get_template_part( 'template-parts/footer/footer-widgets' ); ?>
-
-	<footer id="colophon" class="site-footer">
-
-		<?php if ( has_nav_menu( 'footer' ) ) : ?>
-			<nav aria-label="<?php esc_attr_e( 'Secondary menu', 'twentytwentyone' ); ?>" class="footer-navigation">
-				<ul class="footer-navigation-wrapper">
-					<?php
-					wp_nav_menu(
-						array(
-							'theme_location' => 'footer',
-							'items_wrap'     => '%3$s',
-							'container'      => false,
-							'depth'          => 1,
-							'link_before'    => '<span>',
-							'link_after'     => '</span>',
-							'fallback_cb'    => false,
-						)
-					);
-					?>
-				</ul><!-- .footer-navigation-wrapper -->
-			</nav><!-- .footer-navigation -->
-		<?php endif; ?>
-		<div class="site-info">
-			<div class="site-name">
-				<?php if ( has_custom_logo() ) : ?>
-					<div class="site-logo"><?php the_custom_logo(); ?></div>
-				<?php else : ?>
-					<?php if ( get_bloginfo( 'name' ) && get_theme_mod( 'display_title_and_tagline', true ) ) : ?>
-						<?php if ( is_front_page() && ! is_paged() ) : ?>
-							<?php bloginfo( 'name' ); ?>
-						<?php else : ?>
-							<a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php bloginfo( 'name' ); ?></a>
-						<?php endif; ?>
-					<?php endif; ?>
-				<?php endif; ?>
-			</div><!-- .site-name -->
-
-			<?php
-			if ( function_exists( 'the_privacy_policy_link' ) ) {
-				the_privacy_policy_link( '<div class="privacy-policy">', '</div>' );
-			}
-			?>
-
-			<div class="powered-by">
-				<?php
-				printf(
-					/* translators: %s: WordPress. */
-					esc_html__( 'Proudly powered by %s.', 'twentytwentyone' ),
-					'<a href="' . esc_url( __( 'https://wordpress.org/', 'twentytwentyone' ) ) . '">WordPress</a>'
-				);
-				?>
-			</div><!-- .powered-by -->
-
-		</div><!-- .site-info -->
-	</footer><!-- #colophon -->
-
-</div><!-- #page -->
-
-<?php wp_footer(); ?>
-
+<footer>
+		<div class="footer-container">
+			<div class="left-col">
+				<img src="images/icon/logo - Copy.png" style="width: 200px;">
+				<div class="logo"></div>
+				<div class="social-media">
+        <a href="#"><i class="uil uil-facebook-f"></i></a>
+        <a href="#"><i class="uil uil-instagram"></i></a>
+        <a href="#"><i class="uil uil-twitter"></i></a>
+        <a href="#"><i class="uil uil-linkedin"></i></a>
+      </div>
+	        <br><br>
+				<p class="rights-text">Copyright © 2021 Created By Preeti Rawat,All Rights Reserved.</p>
+				<br><p><img src="images/icon/location.png"> Lovely Professional University<br>Phagwara, Punjab-144401</p><br>
+				<p><img src="images/telephone.png">+91-1234-567-890<br><img src="images/icon/location.png">&nbsp; learnedonline9419@gmail.com</p>
+			</div>
+			<div class="right-col">
+				<h1 style="color: #fff">Our Newsletter</h1>
+				<div class="border"></div><br>
+				<p>Enter Your Email to get our News and updates.</p>
+				<form class="newsletter-form">
+					<input class="txtb" type="email" placeholder="Enter Your Email">
+					<input class="btn" type="submit" value="Submit">
+				</form>
+			</div>
+		</div>
+	</footer>
+    <srcipt src= "script.js"></srcipt>
+	<?php wp_footer(); ?>
 </body>
 </html>
